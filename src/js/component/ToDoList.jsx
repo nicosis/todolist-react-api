@@ -5,6 +5,7 @@ import { FiDelete } from "react-icons/fi";
 const ToDoList = () => {
   const [tasks, setTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState("");
+console.log(tasks);
 
   //actualizo localmente el array con la lista de tareas
   const getAllTaks = () => {
@@ -20,16 +21,19 @@ const ToDoList = () => {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && currentTask.trim()) {
-      const aux = {
+      const auxTask = {
         label: currentTask,
         done: false,
       };
-      setTasks([aux, ...tasks]);
+
+      let newTasks = [auxTask, ...tasks];
+      setTasks(newTasks);
       setCurrentTask("");
+
       // actualizar el array con la tarea agregada a la lista, en el servidor
       fetch("https://assets.breatheco.de/apis/fake/todos/user/nicosis", {
         method: "PUT",
-        body: JSON.stringify(tasks),
+        body: JSON.stringify(newTasks),
         headers: {
           "Content-Type": "application/json",
         },
