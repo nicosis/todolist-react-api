@@ -5,7 +5,6 @@ import { FiDelete } from "react-icons/fi";
 const ToDoList = () => {
   const [tasks, setTasks] = useState([]);
   const [currentTask, setCurrentTask] = useState("");
-console.log(tasks);
 
   //actualizo localmente el array con la lista de tareas
   const getAllTaks = () => {
@@ -27,6 +26,7 @@ console.log(tasks);
       };
 
       let newTasks = [auxTask, ...tasks];
+
       setTasks(newTasks);
       setCurrentTask("");
 
@@ -45,6 +45,7 @@ console.log(tasks);
           return resp.json(); // (regresa una promesa) will try to parse the result as json as return a promise that you can .then for results
         })
         .then((data) => {
+          // getAllTaks()
           //Aquí es donde debe comenzar tu código después de que finalice la búsqueda
           console.log(data); //esto imprimirá en la consola el objeto exacto recibido del servidor
         })
@@ -56,7 +57,7 @@ console.log(tasks);
     const updatedTasks = [...tasks];
     updatedTasks.splice(index, 1); // elimina la tarea del array en el índice especificado
     console.log(index);
-    setTasks(updatedTasks) // actualizo localmente el array sin la tarea eliminada
+    setTasks(updatedTasks); // actualizo localmente el array sin la tarea eliminada
 
     // actualizar el array sin la tarea eliminada en el servidor
     fetch("https://assets.breatheco.de/apis/fake/todos/user/nicosis", {
@@ -73,8 +74,8 @@ console.log(tasks);
         return resp.json(); // (regresa una promesa) will try to parse the result as json as return a promise that you can .then for results
       })
       .then((data) => {
+        // getAllTaks();
         console.log(data); // Esto imprimirá en la consola el objeto exacto recibido del servidor
-        // setTasks(updatedTasks); // Actualizar el estado local de la matriz de tareas
       })
       .catch((error) => console.log(error));
   };
