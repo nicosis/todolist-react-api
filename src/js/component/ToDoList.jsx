@@ -45,7 +45,7 @@ const ToDoList = () => {
           return resp.json(); // (regresa una promesa) will try to parse the result as json as return a promise that you can .then for results
         })
         .then((data) => {
-          // getAllTaks()
+          getAllTaks()
           //Aquí es donde debe comenzar tu código después de que finalice la búsqueda
           console.log(data); //esto imprimirá en la consola el objeto exacto recibido del servidor
         })
@@ -74,7 +74,7 @@ const ToDoList = () => {
         return resp.json(); // (regresa una promesa) will try to parse the result as json as return a promise that you can .then for results
       })
       .then((data) => {
-        // getAllTaks();
+        getAllTaks();
         console.log(data); // Esto imprimirá en la consola el objeto exacto recibido del servidor
       })
       .catch((error) => console.log(error));
